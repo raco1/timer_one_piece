@@ -1,0 +1,620 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --------------------:root, body, html, sr-only--------------------------- */
+
+:root{
+ /* --------------------------fontes------------------------------- */
+
+    font-size: clamp(30%, 1% + 2vw, 62.5%);
+
+    font-family: 'Roboto', sans-serif;
+
+ /* --------------------------cores--------------------------------- */
+
+    --white: hsl(0, 0%, 100%);
+
+    --black: hsl(0, 0%, 0%);
+    
+    --bg-color1: hsl(24, 87%, 63%);
+
+    --bg-color2: hsl(233, 20%, 44%);
+
+    --bg-button-border1:hsl(7, 94%, 67%);
+
+    --bg-button-border2:hsl(222, 54%, 48%);
+
+    --chopper-button-color: hsla(350, 100%, 88%, 1);
+
+    --chopper-controls-color: hsla(350, 100%, 88%, .8);
+
+    --luffy-button-color: hsl(42, 100%, 50%);
+
+    --zoro-button-color: hsl(115, 74%, 41%);
+
+    --nami-button-color: hsl(28, 100%, 54%);
+
+    --nami-music-button-color: hsla(199, 59%, 44%, 0.6);
+
+    --usopp-button-color: hsl(40, 54%, 48%);
+
+    --sanji-button-color: hsl(9, 82%, 54%);
+
+    --robin-button-color: hsl(190, 41%, 58%);
+
+    --franky-button-color: hsl(190, 73%, 70%);
+
+    --brook-button-color: hsl(269, 29%, 38%);
+
+    --brook-music-button-color: hsla(300, 100%, 25%, 0.6);
+
+    --roger-music-buton-color: hsla(60, 100%, 50%, 0.6);
+}   
+
+body{
+    /* animação background */
+    -webkit-animation: color-change-2x 4s linear infinite alternate both;
+    animation: color-change-2x 4s linear infinite alternate both;
+}
+
+.sr-only{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+
+    padding: 0;
+    margin: -1px;
+    border: 0;
+    appearance: none;
+}
+
+.running .ph-play, 
+.running .ph-timer,
+html:not(.running) .ph-pause,
+html:not(.running) .ph-clock-counter-clockwise{
+    display: none;
+}
+
+/* temas diferentes no html */
+
+:root:has(#zoro-theme:checked){
+    --bg-color1: hsl(63, 71%, 62%);
+
+    --bg-color2: hsl(122, 45%, 49%);
+
+    --bg-button-border1:hsl(332, 78%, 38%);
+
+    --bg-button-border2: hsl(275, 99%, 49%);
+}
+
+:root:has(#nami-theme:checked){
+    --bg-color1: hsl(0, 0%, 68%);
+
+    --bg-color2: hsl(177, 47%, 46%);
+
+    --bg-button-border1:hsl(65, 96%, 55%);
+
+    --bg-button-border2: hsl(191, 82%, 24%);
+}
+
+:root:has(#usopp-theme:checked){
+    --bg-color1: hsl(40, 54%, 48%);
+
+    --bg-color2: hsl(32, 19%, 35%);
+
+    --bg-button-border1: hsl(216, 82%, 24%);
+    
+    --bg-button-border2:hsl(32, 100%, 70%);
+}
+
+:root:has(#sanji-theme:checked){
+    --bg-color1: hsla(45, 92%, 86%, 0.804);
+
+    --bg-color2: hsl(44, 100%, 49%);
+
+    --bg-button-border1:hsl(226, 82%, 24%);
+
+    --bg-button-border2: hsl(154, 82%, 24%);
+}
+
+:root:has(#chopper-theme:checked){
+    --bg-color1: hsla(330, 89%, 71%, 0.925);
+
+    --bg-color2: hsl(292, 77%, 45%);
+
+    --bg-button-border1:hsl(208, 78%, 40%);
+
+    --bg-button-border2:hsla(12, 79%, 59%, 0.863);
+}
+
+:root:has(#robin-theme:checked){
+    --bg-color1: hsl(190, 41%, 58%);
+
+    --bg-color2: hsl(271, 37%, 35%);
+
+    --bg-button-border1:hsl(271, 44%, 61%);
+
+    --bg-button-border2:hsl(28, 82%, 24%);
+}
+
+:root:has(#franky-theme:checked){
+    --bg-color1: hsl(149, 100%, 82%);
+
+    --bg-color2: hsla(67, 100%, 91%, 0.723);
+
+    --bg-button-border1:hsla(190, 100%, 82%, 0.8);
+
+    --bg-button-border2:hsl(28, 50%, 41%);
+}
+
+:root:has(#brook-theme:checked){
+    --bg-color1: hsl(268, 26%, 28%);
+
+    --bg-color2: hsl(281, 52%, 19%);
+
+    --bg-button-border1:hsl(269, 39%, 65%);
+
+    --bg-button-border2:hsl(60, 55%, 53%);
+}
+
+/* grid area */
+#app{
+    display: grid;
+    grid-template-areas:
+    "header header"
+    "main container"
+    "footer footer";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: max-content 1fr max-content;
+
+    height: 100vh;
+}
+header{
+    grid-area: header;
+}
+main{
+    grid-area: main;
+}
+.container{
+    grid-area: container;
+}
+footer{
+    grid-area: footer;
+}
+
+/* header, main, container, footer */
+
+#page-themes{
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    align-items: center;
+    padding: 1.2rem 2rem;
+    width: 100%;
+
+    animation: slide-in-left 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+main{
+    display: grid;
+    place-content: center;
+    justify-content: end;
+}
+
+#timer{
+    font-size: 8.2rem;
+    place-self: center;
+}
+
+#controls{
+    display: flex;
+    justify-content: space-between;
+
+    padding: 2.2rem 4rem;
+
+    border-radius: 999rem;
+
+    box-shadow: 1px 1px 10px 1px var(--black);
+}
+
+#sound-theme{
+    display: grid;
+    place-content: center;
+    grid-template-columns: repeat(2, max-content);
+    gap: 4rem;
+
+    padding: 2.8rem 4rem;
+}
+
+#sound-theme .flex{
+    width: 16rem;
+    height: 16rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+
+    border-radius: 0.8rem;
+
+    box-shadow: 1px 1px 5px 1px var(--black);
+
+    transition: 300ms;
+}
+
+footer p{
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+
+    padding: 1.2rem;
+
+    animation: pulse 4s ease-in-out infinite alternate both;
+}
+
+/* estilização dos inputs de volume */
+
+/* estilização geral */
+
+.input-wrapper{
+    appearance: none;
+    background: var(--white);
+    outline: none;
+    width: 80%;
+    height: 0.8rem;
+    border-radius: 0.8rem;  
+}
+
+.input-wrapper::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%; 
+
+    background: var(--black);
+    cursor: pointer;
+}
+
+/* para o Fire Fox */
+
+.input-wrapper::-moz-range-thumb {
+    height: 1.6rem;
+    border-radius: 0.8rem;
+    background: var(--black);
+    border: none;
+}
+
+/* estilização dos botões do header */
+
+.color-theme > fieldset {
+    border: 0;
+    display: flex;
+    gap: 4rem;
+    width: fit-content;
+    padding: 1rem 4rem;
+    margin-inline: auto;
+    background: transparent;
+}
+
+.color-theme input[type="radio"]{
+    appearance: none;
+    visibility: none;
+}
+
+.color-theme label{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    border: 4px solid var(--bg-button-border1);
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+
+    padding: 2rem;
+
+    cursor: pointer;
+
+    transition: 400ms;
+
+    animation: pulse 4s ease-in-out infinite alternate both;
+}
+
+.color-theme label:hover{
+    transform: scale(1.1);
+    animation: none;
+}
+
+.color-theme input[type="radio"]:checked+label{
+    border-color: var(--bg-button-border2);
+    transform: scale(1.1);
+    animation: none;
+}
+
+.color-theme label img{
+    width: 3.5rem;
+    height: 3.5rem;
+
+    border-radius: 50%;
+}
+  
+.color-theme > fieldset label[for="luffy-theme"]{
+    background-color: var(--luffy-button-color);
+}
+
+.color-theme > fieldset label[for="zoro-theme"]{
+    background-color: var(--zoro-button-color);
+}
+
+.color-theme > fieldset label[for="nami-theme"]{
+    background-color: var(--nami-button-color);
+}
+
+.color-theme > fieldset label[for="usopp-theme"]{
+    background-color: var(--usopp-button-color);
+}
+
+.color-theme > fieldset label[for="sanji-theme"]{
+    background-color: var(--sanji-button-color);
+}
+
+.color-theme > fieldset label[for="chopper-theme"]{
+    background-color: var(--chopper-button-color);
+}
+
+.color-theme > fieldset label[for="robin-theme"]{
+    background-color: var(--robin-button-color);
+}
+
+.color-theme > fieldset label[for="franky-theme"]{
+    background-color: var(--franky-button-color);
+}
+
+.color-theme > fieldset label[for="brook-theme"]{
+    background-color: var(--brook-button-color);
+}
+
+/* tamanho da logo e dos botões da página */
+
+#logo img{
+    width: 6.4rem;
+
+    cursor: pointer;
+}
+
+#controls button, #sound-theme button{
+    background-color: transparent;
+    border: 0;
+
+    cursor: pointer;
+
+    font-size: 4rem;
+}
+
+#sound-theme button{
+    transition: 400ms;
+}
+
+#sound-theme .flex:hover{
+    transform: scale(1.1);
+}
+
+#sound-theme button img{
+    width: 100%;
+    height: 12rem;
+
+    padding-top: 2rem;
+    object-fit: contain;
+
+    animation: vibrate 3s linear infinite alternate both;
+}
+
+
+#sound-theme button img.active{
+    transform: scale(1.2);
+    animation: none;
+}
+
+#controls button{
+    font-size: 6.4rem;
+}
+
+.flex:nth-child(1){
+    background-color: var(--brook-music-button-color);
+}
+
+.flex:nth-child(2){
+    background-color: var(--chopper-controls-color);
+}
+
+.flex:nth-child(3){
+    background-color: var(--nami-music-button-color);
+}
+
+.flex:nth-child(4){
+    background-color: var(--roger-music-buton-color);
+}
+
+/* ----------------animações---------------------- */
+
+/* animação do pulso e rotação da borda dos botões do header*/
+
+@keyframes pulse{
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.85);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes rotate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+/* animação dos botões de música */
+
+@keyframes vibrate{
+    0% {
+
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, 2px);
+    }
+    40% {
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        transform: translate(2px, 2px);
+    }
+    80% {
+        transform: translate(2px, -2px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+/* animação para aparecer os botões do header */
+
+@keyframes slide-in-left {
+    0% {
+        transform: translateX(-1000px);
+        opacity: 0;
+    }
+    /* 50%{
+        transform: translateX(-50%);
+        opacity: 0.5;
+    } */
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* animação flocos de neve do background */
+
+.snowflake {
+    color: var(--white);
+    font-size: 1em;
+    font-family: Arial;
+    text-shadow: 0 0 1px #000;
+}
+@-webkit-keyframes snowflakes-fall{
+    0%{
+        top:-10%
+    }
+    100%{
+        top:100%
+    }
+}
+@-webkit-keyframes snowflakes-shake{
+    0%{
+        -webkit-transform:translateX(0px);transform:translateX(0px)
+}
+    50%{-webkit-transform:translateX(80px);transform:translateX(80px)
+}
+    100%{-webkit-transform:translateX(0px);transform:translateX(0px)}
+}
+@keyframes snowflakes-fall{
+    0%{
+        top:-10%
+    }
+    100%{
+        top:100%
+    }
+}
+@keyframes snowflakes-shake{
+    0%{
+        transform:translateX(0px)
+    }
+    50%{
+        transform:translateX(80px)
+    }
+    100%{
+        transform:translateX(0px)
+    }
+}.snowflake{
+    position:fixed;
+    top:-10%;
+    z-index:9999;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    cursor:default;
+    -webkit-animation-name:snowflakes-fall,snowflakes-shake;-webkit-animation-duration:10s,3s;
+    -webkit-animation-timing-function:linear,ease-in-out;-webkit-animation-iteration-count:infinite,infinite;-webkit-animation-play-state:running,running;
+    animation-name:snowflakes-fall,snowflakes-shake;
+    animation-duration:10s,3s;
+    animation-timing-function:linear,ease-in-out;
+    animation-iteration-count:infinite,infinite;
+    animation-play-state:running,running;
+}
+.snowflake:nth-of-type(0){
+    left:1%;-webkit-animation-delay:0s,0s;
+    animation-delay:0s,0s
+}
+.snowflake:nth-of-type(1){
+    left:10%;-webkit-animation-delay:1s,1s;
+    animation-delay:1s,1s
+}
+.snowflake:nth-of-type(2){
+    left:20%;-webkit-animation-delay:6s,.5s;
+    animation-delay:6s,.5s
+}
+.snowflake:nth-of-type(3){
+    left:30%;-webkit-animation-delay:4s,2s;
+    animation-delay:4s,2s
+}
+.snowflake:nth-of-type(4){
+    left:40%;-webkit-animation-delay:2s,2s;
+    animation-delay:2s,2s
+}
+.snowflake:nth-of-type(5){
+    left:50%;-webkit-animation-delay:8s,3s;
+    animation-delay:8s,3s
+}
+.snowflake:nth-of-type(6){
+    left:60%;-webkit-animation-delay:6s,2s;
+    animation-delay:6s,2s
+}
+.snowflake:nth-of-type(7){
+    left:70%;-webkit-animation-delay:2.5s,1s;
+    animation-delay:2.5s,1s
+}
+.snowflake:nth-of-type(8){
+    left:80%;-webkit-animation-delay:1s,0s;
+    animation-delay:1s,0s
+}
+.snowflake:nth-of-type(9){
+    left:90%;-webkit-animation-delay:3s,1.5s;
+    animation-delay:3s,1.5s}  
+@-webkit-keyframes color-change-2x {
+    0% {
+      background: var(--bg-color1);
+    }
+    100% {
+      background: var(--bg-color2);
+    }
+}
+@keyframes color-change-2x {
+    0% {
+      background: var(--bg-color1);
+    }
+    100% {
+      background: var(--bg-color2);
+    }
+}

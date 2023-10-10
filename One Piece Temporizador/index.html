@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-bt">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Temporizador estilo pomodoro para estudos com a temática de One Piece">
+    <meta name="author" content="Rafael Coelho Reis">
+    <meta name="keywords" content="HTML, CSS, JavaScript, One Piece">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    
+    <link rel="shortcut icon" href="./assets/one-piece-logo.png" type="image/x-icon">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script type="module" src="src/main.js" defer></script>
+
+    <title>Temporizador One Piece</title>
+</head>
+<body>
+    <div id="app">
+        <header id="page-themes">
+            <figure id="logo">
+                <img src="./assets/one-piece-logo.png" alt="Jolly Roger dos Chapéus de Palha">
+            </figure>
+
+            <form class="color-theme">
+                <fieldset>
+                    <legend class="sr-only">Escolha um tema de fundo</legend>
+                    
+                    <input type="radio" name="theme" id="luffy-theme" checked>
+                    <label for="luffy-theme"><img src="./assets/crown-simple.svg" alt="Icone de um desenho de uma coroa"></label>
+
+                    <input type="radio" name="theme" id="zoro-theme">
+                    <label for="zoro-theme"><img src="./assets/sword.svg" alt="Icone de um desenho de uma espada"></label>
+
+                    <input type="radio" name="theme" id="nami-theme">
+                    <label for="nami-theme"><img src="./assets/orange-slice.svg" alt="Icone de um desenho de uma laranja"></label>
+
+                    <input type="radio" name="theme" id="usopp-theme">
+                    <label for="usopp-theme"><img src="./assets/gavel.svg" alt="Icone de um desenho de uma marreta"></label>
+
+                    <input type="radio" name="theme" id="sanji-theme">
+                    <label for="sanji-theme"><img src="./assets/cooking-pot.svg" alt="Icone de um desenho de uma panela de comida"></label>
+
+                    <input type="radio" name="theme" id="chopper-theme">
+                    <label for="chopper-theme"><img src="./assets/stethoscope.svg" alt="Icone de um desenho de um estetoscópio"></label>
+
+                    <input type="radio" name="theme" id="robin-theme">
+                    <label for="robin-theme"><img src="./assets/books.svg" alt="Icone de um desenho de alguns livros"></label>
+
+                    <input type="radio" name="theme" id="franky-theme">
+                    <label for="franky-theme"><img src="./assets/robot.svg" alt="Icone de um desenho de um robô"></label>
+
+                    <input type="radio" name="theme" id="brook-theme">
+                    <label for="brook-theme"><img src="./assets/skull.svg" alt="Icone de um desenho de uma caveira"></label>
+                </fieldset>
+            </form>
+        </header>
+
+        <main>
+            <section id="timer">
+                <span id="minutes">00</span>
+                <span>:</span>
+                <span id="seconds">00</span>
+            </section>
+    
+            <section id="controls">
+                <button 
+                    data-action="toggleRunning"
+                    class="ph ph-play" id="play">
+                    <span class="sr-only">Começar contador</span>
+                </button>
+
+                <button 
+                    data-action="toggleRunning"
+                    class="ph ph-pause">
+                    <span class="sr-only">Pausar contador</span>
+                </button>
+
+                <button 
+                    data-action="set"
+                    class="ph ph-timer">
+                    <span class="sr-only">Ajustar contador</span>
+                </button>
+
+                <button 
+                    data-action="reset"
+                    class="ph ph-clock-counter-clockwise">
+                    <span class="sr-only">Reiniciar contador</span>
+                </button>
+            </section>
+        </main>
+
+        <container id="sound-theme">
+
+            <section class="flex">
+                <button class="playTheme">
+                    <img id="brook" data-music="brook" src="./assets/Brook-icon.svg" alt="Brook icone">
+                    <span class="sr-only">Tocar Binks no Sake LoFi</span>
+                </button>
+                <input type="range" id="brookVol" class="input-wrapper volume" data-name="brook" min="0" max="1" value="0.5" step="0.01">
+            </section>
+
+            <section class="flex">
+                <button class="playTheme">
+                    <img id="chopper" data-music="chopper" src="./assets/chopper-icon.svg" alt="Chopper icone">
+                    <span class="sr-only">Tocar Boku wa Doctor LoFi</span>
+                </button>
+                <input type="range" id="chopperVol" class="input-wrapper volume" data-name="chopper" min="0" max="1" value="0.5" step="0.01">
+            </section>
+                
+            <section class="flex">
+                <button class="playTheme">
+                    <img id="nami" data-music="nami" src="./assets/nami-icon.svg" alt="Nami icone">
+                    <span class="sr-only">Tocar tema de música da Nami LoFi</span>
+                </button>
+                <input type="range" id="namiVol" class="input-wrapper volume" data-name="nami" min="0" max="1" value="0.5" step="0.01">
+            </section>
+
+            <section class="flex">
+                <button class="playTheme">
+                    <img id="roger" data-music="roger" src="./assets/roger.svg" alt="Roger icone">
+                    <span class="sr-only">Tocar Gold and Oden LoFi</span>
+                </button>
+                <input type="range" id="rogerVol" class="input-wrapper volume" data-name="roger" min="0" max="1" value="0.5" step="0.01">
+            </section>
+
+        </container>
+        
+        <!-- <aside>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe dolores voluptatem eius nostrum corporis aut ipsam nam nulla facere dolorem totam laboriosam incidunt deleniti illo soluta aspernatur sit, fugiat atque?
+        </aside> -->
+
+        <footer>
+            <p>
+                Feito por Rafael Coelho 🦝
+            </p>
+        </footer>
+    </div>
+    <!-- animação background (chopper) -->
+    <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake">
+        ❅
+        </div>
+        <div class="snowflake">
+        ❅
+        </div>
+        <div class="snowflake">
+        ❆
+        </div>
+        <div class="snowflake">
+        ❄
+        </div>
+        <div class="snowflake">
+        ❅
+        </div>
+        <div class="snowflake">
+        ❆
+        </div>
+        <div class="snowflake">
+        ❄
+        </div>
+        <div class="snowflake">
+        ❅
+        </div>
+        <div class="snowflake">
+        ❆
+        </div>
+        <div class="snowflake">
+        ❄
+        </div>
+      </div>
+</body>
+</html>

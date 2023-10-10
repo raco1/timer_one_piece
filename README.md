@@ -1,3 +1,4 @@
+
 # Temporizador One Piece
 
 Este projeto foi inicialmente desenvolvido para os alunos do Explorer da Rocketseat, ao final do Stage 05 - Avançando no JavaScript.
@@ -48,3 +49,7 @@ JS:
 Com o tempo quero deixá-lo cada vez mais dinâmico, por isso irei fazer algumas alterações conforme avanço no curso Explorer.
 À princípio gostaria de fazer uma aba interativa para explicar ao usuário como ele pode realizar cada interação que a ferramenta pode oferecer, desde o funcionamento do temporizador, até a dinâmica dos temas e dos botões de música.
 
+
+## Observações
+
+Como os arquivos de música eram muito grandes, não consegui fazer o upload deles para esse repositório. Estou trabalhando numa forma de compactá-los para realizar essa adição importante.

@@ -7,6 +7,10 @@ Contudo, senti uma imensa necessidade (e vontade) de alterar o design, e assim, 
 Além de me divertir com o tema, pude botar em prática todo meu conhecimento acerca de HTML e CSS aprendidos até então no Explorer. 
 
 
+<div align="center">
+    <img src="https://github.com/raco1/timer_one_piece/assets/113068055/747084c6-11eb-4a41-aed7-4c407b606879" width="740px" />
+</div>
+
 ## Funcionalidades
 
 - Temas de 9 personagens do Bando dos Chapéu de Palha;
